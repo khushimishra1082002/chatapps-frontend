@@ -1,6 +1,6 @@
 11-06-2026
 
-Bugs Fixes 
+Bugs Fixe
 
 1.Signup me image files ko file bannaha hai.✅
 2.FIX search fixes.✅
