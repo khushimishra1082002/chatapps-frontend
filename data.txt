@@ -1,0 +1,37 @@
+Task manger app
+backend with nodemailer 
+
+chatapp
+frontend or backend real time communication 
+
+food ordering system
+using workwnch becausly practice query commands joins
+
+school managrment
+using workwnch becausly practice query commands joins
+
+
+Bug 
+
+Shivay login he or kayra login he
+
+shivay ne message kiya kayra ko hello kayra 
+
+to unread message count 1 dekha jo message aaya user ka uspe click kiya to unread count 0 ho gya 
+
+ye to shi he real whatsapp me bhi esa hi scanario hota hai 
+
+shivay ke pass kayra ki chat khuli he 
+
+kayra ke pass shivay ki chat khuli he
+
+then kayra ne response kiya hii shivay
+
+to shivay ke pass chat open phir bhi unread count 1 aa rha that is wrong chat open to 
+unread count ka koi scanario hi nhi
+
+to intiaaly one kyu aa rha jabki chat open he phir bhi 
+
+iske bad unread count nh aaa rha oen to onemessage ja recive ho rhe like whatsapp
+
+How to resolv it.

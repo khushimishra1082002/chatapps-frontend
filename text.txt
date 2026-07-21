@@ -1,0 +1,21 @@
+Final Feature List
+Authentication
+✅ Signup
+✅ Login (Email)
+✅ Login (Phone)
+Chat
+✅ One-to-One Chat
+✅ Group Chat
+✅ Search User
+✅ Create Group
+✅ Add Group Members
+✅ Group Image
+Messaging
+✅ Send Messages
+✅ Send Attachments
+✅ Unread Count
+⏳ Sent / Delivered / Seen Status
+⏳ Typing Indicator
+Realtime
+⏳ Online / Offline Status
+✅ Socket.IO Integration
