@@ -57,7 +57,7 @@ const Header = ({ setSidebarView }) => {
             className="w-8 h-8 rounded-full"
             src={
               profileData?.image
-                ? `http://localhost:5000/uploads/${profileData.image}`
+                ? `https://chatapps-backend.onrender.com/uploads/${profileData.image}`
                 : "https://www.gravatar.com/avatar/?d=mp"
             }
           />
