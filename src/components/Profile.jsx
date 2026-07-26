@@ -49,7 +49,7 @@ const Profile = ({ setSidebarView }) => {
             className="w-24 h-24 rounded-full"
             src={
               profileData?.image
-                ? `http://localhost:5000/uploads/${profileData.image}`
+                ? `https://chatapps-backend.onrender.com/${profileData.image}`
                 : "https://www.gravatar.com/avatar/?d=mp"
             }
           />

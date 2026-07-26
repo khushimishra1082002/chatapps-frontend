@@ -297,11 +297,11 @@ const ChatBoat = ({
                 src={
                   selectUser?.isGroup
                     ? selectUser.groupImage
-                      ? `http://localhost:5000/uploads/${selectUser.groupImage}`
+                      ? `https://chatapps-backend.onrender.com/${selectUser.groupImage}`
                       : "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
                     : otherUser?.image
-                      ? `http://localhost:5000/uploads/${otherUser.image}`
-                      : "http://localhost:5000/uploads/1781081199448_user.jpg"
+                      ? `https://chatapps-backend.onrender.com/${otherUser.image}`
+                      : "https://chatapps-backend.onrender.com/1781081199448_user.jpg"
                 }
                 className="w-11 h-11 rounded-full"
               />
@@ -369,12 +369,12 @@ const ChatBoat = ({
                         {att.fileType === "image" ? (
                           <img
                             className="w-40 rounded-lg shadow border border-black/10"
-                            src={`http://localhost:5000/${att.fileUrl}`}
+                            src={`https://chatapps-backend.onrender.com/${att.fileUrl}`}
                             alt=""
                           />
                         ) : (
                           <a
-                            href={`http://localhost:5000/${att.fileUrl}`}
+                            href={`https://chatapps-backend.onrender.com/${att.fileUrl}`}
                             target="_blank"
                             rel="noreferrer"
                             className="flex items-center gap-3 bg-white border border-gray-200 px-3 py-2 rounded-xl hover:bg-gray-50 w-fit max-w-xs"

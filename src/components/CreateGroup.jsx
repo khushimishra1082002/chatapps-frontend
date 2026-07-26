@@ -109,7 +109,7 @@ const CreateGroup = ({ setSidebarView, members }) => {
                     className="w-12 h-12 rounded-full object-cover"
                     src={
                       member.image
-                        ? `http://localhost:5000/uploads/${member.image}`
+                        ? `https://chatapps-backend.onrender.com/${member.image}`
                         : "https://www.gravatar.com/avatar/?d=mp"
                     }
                     alt={member.name}

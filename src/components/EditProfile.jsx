@@ -89,7 +89,7 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
             profileData?.image
               ? profileData.image.startsWith("blob:")
                 ? profileData.image
-                : `http://localhost:5000/uploads/${profileData.image}`
+                : `https://chatapps-backend.onrender.com/${profileData.image}`
               : "https://www.gravatar.com/avatar/?d=mp"
           }
         />
