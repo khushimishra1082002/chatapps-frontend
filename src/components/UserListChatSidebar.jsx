@@ -211,11 +211,11 @@ const UserListChatSidebar = ({
                     src={
                       chat.isGroup
                         ? chat.groupImage
-                          ? `https://chatapps-backend.onrender.com/${chat.groupImage}`
+                          ? `https://chatapps-backend.onrender.com/uploads/${chat.groupImage}`
                           : "https://static.vecteezy.com/system/resources/thumbnails/078/631/000/small/minimalist-flat-teamwork-staff-group-user-community-people-icon-vector.jpg"
                         : otherUser?.image
-                          ? `https://chatapps-backend.onrender.com/${otherUser.image}`
-                          : "https://chatapps-backend.onrender.com/1781081199448_user.jpg"
+                          ? `https://chatapps-backend.onrender.com/uploads/${otherUser.image}`
+                          : "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
                     }
                     className=" rounded-full object-cover border border-black/10 w-12 h-12"
                   />
@@ -272,11 +272,11 @@ const UserListChatSidebar = ({
                     src={
                       chat.isGroup
                         ? chat.groupImage
-                          ? `https://chatapps-backend.onrender.com/${chat.groupImage}`
+                          ? `https://chatapps-backend.onrender.com/uploads/${chat.groupImage}`
                           : "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
                         : otherUser?.image
-                          ? `https://chatapps-backend.onrender.com/${otherUser.image}`
-                          : "https://chatapps-backend.onrender.com/1781081199448_user.jpg"
+                          ? `https://chatapps-backend.onrender.com/uploads/${otherUser.image}`
+                          : "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
                     }
                     className="w-12 h-12 rounded-full object-cover"
                   />
@@ -306,8 +306,8 @@ const UserListChatSidebar = ({
                 <img
                   src={
                     user.image
-                      ? `https://chatapps-backend.onrender.com/${user.image}`
-                      : "https://chatapps-backend.onrender.com/1781258996563_user.jpg"
+                      ? `https://chatapps-backend.onrender.com/uploads/${user.image}`
+                      : "https://chatapps-backend.onrender.com/uploads/1781258996563_user.jpg"
                   }
                   className="w-12 h-12 rounded-full object-cover"
                 />
