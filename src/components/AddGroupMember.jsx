@@ -74,7 +74,7 @@ const AddGroupMember = ({
                   className="w-12 h-12 rounded-full object-cover "
                   src={
                     user.image
-                      ? `http://localhost:5000/uploads/${user.image}`
+                      ? `https://chatapps-backend.onrender.com/${user.image}`
                       : "https://www.gravatar.com/avatar/?d=mp"
                   }
                   alt={user.name}
@@ -125,7 +125,7 @@ const AddGroupMember = ({
                   className="w-12 h-12 rounded-full object-cover"
                   src={
                     user.image
-                      ? `http://localhost:5000/uploads/${user.image}`
+                      ? `https://chatapps-backend.onrender.com/${user.image}`
                       : "https://www.gravatar.com/avatar/?d=mp"
                   }
                   alt={user.name}
