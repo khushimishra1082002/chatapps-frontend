@@ -37,7 +37,10 @@ const Signup = ({ isSignup, setIsSignup }) => {
     data.append("password", formData.password);
     data.append("phoneNo", formData.phoneNo);
 
-    data.append("file", formData.image);
+    if (formData.image) {
+      data.append("file", formData.image);
+    }
+
 
     try {
       const res = await authService.signup(data);
