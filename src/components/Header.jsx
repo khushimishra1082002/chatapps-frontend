@@ -72,12 +72,24 @@ const Header = ({ setSidebarView }) => {
           </span>
           {menuOpen && (
             <div
-              onClick={() => setSidebarView("addGroupMember")}
+              onClick={() => {
+                setMenuOpen(false);
+                setSidebarView("addGroupMember");
+              }}
               className="absolute right-4 mt-2 bg-white shadow-md rounded p-2 flex items-center gap-2 cursor-pointer"
             >
-              <FaUserGroup />
+
+              <div className="bg-green-100 p-2 rounded-full">
+                <FaUserGroup className="text-green-600 text-lg" />
+              </div>
+
               <div>
-                <span className="text-sm">+ New Group</span>
+                <span className="text-sm font-medium text-gray-800">
+                  New Group
+                </span>
+                <p className="text-xs text-gray-500">
+                  Create a group chat
+                </p>
               </div>
             </div>
           )}

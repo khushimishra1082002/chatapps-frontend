@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { userService } from "../services/user.service";
+import { jwtDecode } from "jwt-decode";
+
 
 const AddGroupMember = ({
   setSidebarView,
@@ -10,6 +12,18 @@ const AddGroupMember = ({
 }) => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [decodedId, setDecodedId] = useState(null);
+
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+
+    if (token) {
+      const decoded = jwtDecode(token);
+      setDecodedId(decoded.id);
+    }
+  }, []);
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -42,9 +56,16 @@ const AddGroupMember = ({
     setSelectedUsersForGroup(filteredUsers);
   };
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  // const filteredUsers = users.filter((user) =>
+  //   user.name.toLowerCase().includes(search.toLowerCase()),
+  // );
+
+  const filteredUsers = users
+    .filter((user) => user.user_id !== decodedId)
+    .filter((user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()),
+    );
+
 
   return (
     <div className="h-screen flex flex-col bg-white relative overflow-hidden">
@@ -135,7 +156,10 @@ const AddGroupMember = ({
                   <h2 className="font-medium">{user.name}</h2>
 
                   <p className="text-sm text-gray-500 line-clamp-1">
-                    {user.about || "Hey there! I am using chat app."}
+                    {user.about && user.about !== "null"
+                      ? user.about
+                      : "Hey there! I am using chat app."}
+
                   </p>
                 </div>
               </div>

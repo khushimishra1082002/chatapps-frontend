@@ -7,7 +7,7 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
   const token = sessionStorage.getItem("token");
 
   const [decodedId, setDecodedId] = useState(null);
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState("");
   const [imageFile, setImageFile] = useState(null);
 
   useEffect(() => {
@@ -17,12 +17,19 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
     }
   }, [token]);
 
-  const fetchProfile = async () => {
-    if (!decodedId) return;
+ const fetchProfile = async () => {
+  if (!decodedId) return;
 
-    const res = await userProfileService.getProfile(decodedId);
-    setProfileData(res.data);
-  };
+  const res = await userProfileService.getProfile(decodedId);
+
+  setProfileData({
+    ...res.data,
+    about: res.data.about === "null" || res.data.about === null 
+      ? "" 
+      : res.data.about,
+  });
+};
+
 
   useEffect(() => {
     fetchProfile();
@@ -123,11 +130,12 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
 
         <input
           name="about"
-          className="w-full p-2 rounded  outline-none text-[14px]"
+          className="w-full p-2 rounded outline-none text-[14px]"
           value={profileData?.about || ""}
           onChange={handleChange}
           placeholder="About"
         />
+
       </div>
 
       {/* PHONE */}
