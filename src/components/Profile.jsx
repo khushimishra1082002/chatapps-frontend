@@ -49,8 +49,8 @@ const Profile = ({ setSidebarView }) => {
             className="w-24 h-24 rounded-full"
             src={
               profileData?.image
-                ? `https://chatapps-backend.onrender.com/uploads/${profileData.image}`
-                : "https://www.gravatar.com/avatar/?d=mp"
+               ||
+                "https://www.gravatar.com/avatar/?d=mp"
             }
           />
         </div>

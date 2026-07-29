@@ -17,18 +17,18 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
     }
   }, [token]);
 
- const fetchProfile = async () => {
-  if (!decodedId) return;
+  const fetchProfile = async () => {
+    if (!decodedId) return;
 
-  const res = await userProfileService.getProfile(decodedId);
+    const res = await userProfileService.getProfile(decodedId);
 
-  setProfileData({
-    ...res.data,
-    about: res.data.about === "null" || res.data.about === null 
-      ? "" 
-      : res.data.about,
-  });
-};
+    setProfileData({
+      ...res.data,
+      about: res.data.about === "null" || res.data.about === null
+        ? ""
+        : res.data.about,
+    });
+  };
 
 
   useEffect(() => {
@@ -96,9 +96,10 @@ const EditProfile = ({ sidebarView, setSidebarView }) => {
             profileData?.image
               ? profileData.image.startsWith("blob:")
                 ? profileData.image
-                : `https://chatapps-backend.onrender.com/uploads/${profileData.image}`
+                : profileData.image
               : "https://www.gravatar.com/avatar/?d=mp"
           }
+
         />
 
         <label className="absolute bottom-1 right-1 bg-white p-2 rounded-full shadow cursor-pointer">

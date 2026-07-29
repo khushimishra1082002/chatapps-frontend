@@ -55,11 +55,8 @@ const Header = ({ setSidebarView }) => {
           </span>
           <img
             className="w-8 h-8 rounded-full"
-            src={
-              profileData?.image
-                ? `https://chatapps-backend.onrender.com/uploads/${profileData.image}`
-                : "https://www.gravatar.com/avatar/?d=mp"
-            }
+           src={profileData?.image || "https://www.gravatar.com/avatar/?d=mp"}
+
           />
         </div>
 

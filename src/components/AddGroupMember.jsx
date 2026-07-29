@@ -94,9 +94,9 @@ const AddGroupMember = ({
                 <img
                   className="w-12 h-12 rounded-full object-cover "
                   src={
-                    user.image
-                      ? `https://chatapps-backend.onrender.com/uploads/${user.image}`
-                      : "https://www.gravatar.com/avatar/?d=mp"
+                    user?.image
+                      
+                    || "https://www.gravatar.com/avatar/?d=mp"
                   }
                   alt={user.name}
                 />
@@ -145,9 +145,9 @@ const AddGroupMember = ({
                 <img
                   className="w-12 h-12 rounded-full object-cover"
                   src={
-                    user.image
-                      ? `https://chatapps-backend.onrender.com/uploads/${user.image}`
-                      : "https://www.gravatar.com/avatar/?d=mp"
+                    user?.image
+                     ||
+                      "https://www.gravatar.com/avatar/?d=mp"
                   }
                   alt={user.name}
                 />
