@@ -3,7 +3,7 @@ import { authService } from "../services/auth.service";
 import { validateSignup } from "../validations/signupValidations";
 
 const Signup = ({ isSignup, setIsSignup }) => {
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,7 +52,8 @@ const Signup = ({ isSignup, setIsSignup }) => {
     } catch (err) {
       console.log(err);
       const message = err?.response?.data?.message || "Signup failed";
-
+      console.log("Signup error:", err.response?.data);
+      console.log("Status:", err.response?.status);
       alert(message);
     }
   };
