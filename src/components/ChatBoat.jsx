@@ -9,6 +9,8 @@ import { BiSolidPhotoAlbum } from "react-icons/bi";
 import { useRef } from "react";
 import { attachmentService } from "../services/attachement.service";
 import { RxCross2 } from "react-icons/rx";
+import { ArrowLeft } from "lucide-react";
+
 
 const ChatBoat = ({
   selectUser,
@@ -16,6 +18,7 @@ const ChatBoat = ({
   setSelectUser,
   activeConversationId,
   setActiveConversationId,
+  setShowChat,
 }) => {
   console.log("selectUser", selectUser);
   console.log("activeConversationId", activeConversationId);
@@ -58,7 +61,7 @@ const ChatBoat = ({
 
   const otherUser = isConversation
     ? selectUser?.ConversationMembers?.find((m) => m.user_id !== currentUserId)
-        ?.User
+      ?.User
     : selectUser;
 
   //------------
@@ -288,40 +291,49 @@ const ChatBoat = ({
       {selectUser ? (
         <>
           <div
-            className="h-16 bg-white border-b border-black/10 flex
-             items-center justify-between px-5
-          "
+            className="h-16 bg-white border-b border-black/10 flex items-center justify-between px-3 sm:px-5"
           >
-            <div className="flex items-center gap-3">
-              <img
-                src={
-                  selectUser?.isGroup
-                    ? selectUser.groupImage
-                    
-                      || "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
-                    : otherUser?.image
-                      ||
-                       "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
-                }
-                className="w-11 h-11 rounded-full"
-              />
 
-              <div>
-                <h3 className="font-semibold text-gray-800">
-                  {selectUser?.isGroup
-                    ? selectUser.groupName
-                    : isConversation
-                      ? otherUser?.name
-                      : selectUser?.name}
-                </h3>
-                <div className="text-xs text-gray-500">
+            <div className="flex items-center">
+              <button
+                onClick={() => setShowChat(false)}
+                className="md:hidden mr-2 text-gray-600"
+              >
+                <ArrowLeft size={24} />
+              </button>
+
+
+              <div className="flex items-center gap-3">
+                <img
+                  src={
+                    selectUser?.isGroup
+                      ? selectUser.groupImage
+
+                      || "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
+                      : otherUser?.image
+                      ||
+                      "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
+                  }
+                  className="w-11 h-11 rounded-full"
+                />
+
+                <div>
+                  <h3 className="font-semibold text-gray-800">
+                    {selectUser?.isGroup
+                      ? selectUser.groupName
+                      : isConversation
+                        ? otherUser?.name
+                        : selectUser?.name}
+                  </h3>
                   <div className="text-xs text-gray-500">
-                    {selectUser?.isGroup &&
-                      selectUser?.ConversationMembers?.map((m) =>
-                        m.User?.user_id === currentUserId
-                          ? "You"
-                          : m.User?.name,
-                      ).join(", ")}
+                    <div className="text-xs text-gray-500">
+                      {selectUser?.isGroup &&
+                        selectUser?.ConversationMembers?.map((m) =>
+                          m.User?.user_id === currentUserId
+                            ? "You"
+                            : m.User?.name,
+                        ).join(", ")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -350,11 +362,10 @@ const ChatBoat = ({
                   className={`flex ${isMe ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-md px-4 py-2 rounded-2xl shadow-sm ${
-                      isMe
-                        ? "bg-[#d9fdd3] rounded-br-md"
-                        : "bg-white rounded-bl-md"
-                    }`}
+                    className={`max-w-md px-4 py-2 rounded-2xl shadow-sm ${isMe
+                      ? "bg-[#d9fdd3] rounded-br-md"
+                      : "bg-white rounded-bl-md"
+                      }`}
                   >
                     {selectUser?.isGroup && (
                       <div className="text-[12px] text-gray-500">

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { userProfileService } from "../services/profile.service";
 import { FaUserGroup } from "react-icons/fa6";
+import { ArrowLeft } from "lucide-react";
 
-const Header = ({ setSidebarView }) => {
+
+const Header = ({ setSidebarView, showChat, setShowChat }) => {
   const token = sessionStorage.getItem("token");
 
   const [decodedId, setDecodedId] = useState(null);
@@ -34,28 +36,50 @@ const Header = ({ setSidebarView }) => {
   }, [decodedId]);
 
   return (
-    <div className="flex items-center justify-between h-[10vh] bg-white border border-black/10 px-4">
+    <div className="flex items-center justify-between h-[10vh]
+     bg-white border border-black/10 px-3 sm:px-5
+gap-3 sm:gap-6
+">
+
+      {showChat && (
+        <button
+          onClick={() => setShowChat(false)}
+          className="md:hidden text-gray-600"
+        >
+          <ArrowLeft size={24} />
+        </button>
+      )}
+
       <Link to="/">
         <h1 className="font-bold text-2xl flex items-center gap-2">
           <img
             src="https://cdn-icons-png.flaticon.com/512/134/134914.png"
             className="w-7 h-7"
           />
-          ChatApp
+          <span className="">
+            ChatApp
+          </span>
+
         </h1>
       </Link>
 
       <div className="flex items-center gap-7">
         <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => setSidebarView("profile")}
+          className={`flex items-center gap-2 ${showChat ? "cursor-default" : "cursor-pointer"
+            }`}
+          onClick={() => {
+            if (!showChat) {
+              setSidebarView("profile");
+            }
+          }}
         >
-          <span className="text-sm font-medium">
+
+          <span className="text-sm font-medium hidden sm:block">
             {profileData?.name || "User"}
           </span>
           <img
-            className="w-8 h-8 rounded-full"
-           src={profileData?.image || "https://www.gravatar.com/avatar/?d=mp"}
+            className="w-9 h-9 rounded-full object-cover"
+            src={profileData?.image || "https://www.gravatar.com/avatar/?d=mp"}
 
           />
         </div>
@@ -73,7 +97,9 @@ const Header = ({ setSidebarView }) => {
                 setMenuOpen(false);
                 setSidebarView("addGroupMember");
               }}
-              className="absolute right-4 mt-2 bg-white shadow-md rounded p-2 flex items-center gap-2 cursor-pointer"
+              className="absolute right-3 top-14 z-50
+ bg-white shadow-md rounded p-2
+               flex items-center gap-2 cursor-pointer"
             >
 
               <div className="bg-green-100 p-2 rounded-full">
