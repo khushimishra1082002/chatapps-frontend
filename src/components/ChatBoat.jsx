@@ -297,11 +297,11 @@ const ChatBoat = ({
                 src={
                   selectUser?.isGroup
                     ? selectUser.groupImage
-                      ? `https://chatapps-backend.onrender.com/uploads/${selectUser.groupImage}`
-                      : "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
+                    
+                      || "https://cdn.vectorstock.com/i/500p/57/85/group-people-icon-vector-2855785.avif"
                     : otherUser?.image
-                      ? `https://chatapps-backend.onrender.com/uploads/${otherUser.image}`
-                      : "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
+                      ||
+                       "https://chatapps-backend.onrender.com/uploads/1781081199448_user.jpg"
                 }
                 className="w-11 h-11 rounded-full"
               />
