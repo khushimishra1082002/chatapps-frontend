@@ -49,8 +49,7 @@ const Login = ({ setShowBack }) => {
       }
     } catch (err) {
       console.log(err);
-      console.log("Signup error:", error.response?.data);
-      console.log("Status:", error.response?.status);
+     
       const message =
         err?.response?.data?.message || "Invalid email or password";
 

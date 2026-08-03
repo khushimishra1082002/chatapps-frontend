@@ -41,6 +41,12 @@ const ChatBoat = ({
 
   //----------------------
 
+
+  useEffect(() => {
+  setMessages([]);
+}, [selectUser]);
+
+
   const fileRef = useRef(null);
   const menuRef = useRef(null);
   const selectUserRef = useRef(selectUser);
