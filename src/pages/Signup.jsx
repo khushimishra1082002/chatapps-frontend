@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { authService } from "../services/auth.service";
 import { validateSignup } from "../validations/signupValidations";
+import { Eye, EyeOff } from "lucide-react";
+
 
 const Signup = ({ isSignup, setIsSignup }) => {
+
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -85,18 +90,35 @@ const Signup = ({ isSignup, setIsSignup }) => {
       />
       {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        className="border border-black/10 p-2 rounded-sm focus:outline-none focus:ring-2
-         focus:ring-blue-400 text-sm"
-      />
+      <div className="relative">
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          className="border border-black/10 p-2 pr-10 rounded-sm focus:outline-none 
+    focus:ring-2 focus:ring-blue-400 text-sm w-full"
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 
+    hover:text-gray-700 cursor-pointer"
+        >
+          {showPassword ? (
+            <EyeOff size={18} />
+          ) : (
+            <Eye size={18} />
+          )}
+        </button>
+      </div>
+
       {errors.password && (
         <p className="text-red-500 text-xs">{errors.password}</p>
       )}
+
 
       <input
         type="number"

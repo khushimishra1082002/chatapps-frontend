@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../services/auth.service";
 import { validatelogin } from "../validations/loginValidations";
+import { Eye, EyeOff } from "lucide-react";
+
 
 const Login = ({ setShowBack }) => {
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -18,7 +21,13 @@ const Login = ({ setShowBack }) => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [e.target.name]: "",
+    }));
   };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,12 +58,27 @@ const Login = ({ setShowBack }) => {
       }
     } catch (err) {
       console.log(err);
-     
+
       const message =
         err?.response?.data?.message || "Invalid email or password";
 
-      alert(message);
+      if (message === "User not found") {
+        setErrors({
+          email: "Email does not exist",
+        });
+      }
+      else if (message === "Invalid password") {
+        setErrors({
+          password: "Wrong password",
+        });
+      }
+      else {
+        setErrors({
+          email: message,
+        });
+      }
     }
+
   };
 
 
@@ -72,17 +96,29 @@ const Login = ({ setShowBack }) => {
           <p className="text-red-500 text-xs">{errors.email}</p>
         )}
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-          className="border border-black/10 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-        />
+        <div className="relative">
+          <input
+            name="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            onChange={handleChange}
+            className="w-full border border-black/10 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm pr-10"
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-2 text-gray-500"
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
+        </div>
 
         {errors.password && (
           <p className="text-red-500 text-xs">{errors.password}</p>
         )}
+
+
 
         <button
           onClick={handleLogin}
